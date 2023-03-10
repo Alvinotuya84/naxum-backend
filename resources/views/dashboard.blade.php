@@ -29,7 +29,7 @@
                     <img src="{{asset('assets/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Accounts <i class="mdi mdi-account-group mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">{{App\Models\User::all()->count()}}</h2>
+                    <h2 class="mb-5">{{App\Models\User::where('role',null)->get()->count()}}</h2>
                 </a>
                 </div>
               </div>
