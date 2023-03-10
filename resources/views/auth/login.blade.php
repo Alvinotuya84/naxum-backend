@@ -21,18 +21,17 @@
                             <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                         </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">SIGN IN></button>
+                        <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                     </div>
                         <div class="my-2 d-flex justify-content-between align-items-center">
                         <div class="form-check">
                         <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"> Keep me signed in </label>
                     </div>
-            @if (Route::has('password.request'))
+            {{-- @if (Route::has('password.request'))
             <a class="auth-link text-black" href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}
             </a>
-        @endif
+        @endif --}}
             </div>
 
     </form>
