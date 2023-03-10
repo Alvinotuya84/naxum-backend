@@ -27,12 +27,12 @@ class UpdateUser extends FormRequest
     public function rules()
     {
         return [
-            'full_name' => ['required', 'string', 'max:255'],
-            'user_name' => ['required', 'string', 'max:255'],
-            'contact_number' => ['nullable', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(Request::instance()->id)],
-            'old_password' => ['required', 'string', 'min:8'],
-            'new_password' => ['required', 'string', 'min:8'],
+            'full_name' => 'required | string | max:255',
+            'user_name' => 'required | string | max:255',
+            'contact_number' => 'nullable | string | max:255',
+            'email' => 'required | string | email | max:255', Rule::unique('users')->ignore(Request::instance()->id),
+            'old_password' => 'required | string | min:8',
+            'new_password' => 'required | string | min:8',
         ];
     }
 

@@ -42,10 +42,10 @@ class LoginController extends Controller
     }
 
 
-    public function update(Request $request, User $user){
+    public function update(UpdateUser $request, User $user){
 
 
-        $clean=$request;
+        $clean=$request->validated();
 
         if(!Hash::check($request->old_password,$user->password)){
             return response()->json([
