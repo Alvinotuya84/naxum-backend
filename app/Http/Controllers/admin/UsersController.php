@@ -40,7 +40,8 @@ class UsersController extends Controller
     public function create()
     {
         //
-        return view('account-add-edit');
+        $user=null;
+        return view('account-add-edit',compact('user'));
     }
 
     /**
@@ -53,7 +54,7 @@ class UsersController extends Controller
     {
         return Validator::make($data, [
             'full_name' => ['required', 'string', 'max:255'],
-            'user_name' => ['required', 'string', 'max:255'],
+            'user_name' => ['required', 'string', 'max:255','unique:users'],
             'contact_number' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -72,7 +73,7 @@ class UsersController extends Controller
         $clean=$request->validate([
 
                 'full_name' => ['required', 'string', 'max:255'],
-                'user_name' => ['required', 'string', 'max:255'],
+                'user_name' => ['required', 'string', 'max:255','unique:users'],
                 'contact_number' => ['nullable', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -159,5 +160,9 @@ return redirect()->route('home');    }
             'success'=>'Succesful Deletion'
 
         ]);
+    }
+    public function viewall(){
+        $accounts = User::where('id', '!=', auth()->id())->get();
+        return view('accounts-list',compact('accounts'));
     }
 }

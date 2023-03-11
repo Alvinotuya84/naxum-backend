@@ -5,11 +5,16 @@
 
 
 
-<h4>{{$user?'Edit':'Delete'}} User</h4>
-<form class="pt-3" method="POST" action="{{route('users.update',$user)}}">
+<h4>{{$user?'Edit':'Add'}} User</h4>
+<form class="pt-3" method="POST" action="{{$user?route('users.update',$user):route('users.store')}}">
 
     @csrf
-@method('PUT')
+   @if ($user)
+   @method('PUT')
+   @else
+   @method('POST')
+
+   @endif
 
     <div class="form-group">
         <input type="text"  name="user_name" class="form-control form-control-lg @error('user_name') is-invalid @enderror" id="exampleInputEmail1" placeholder="User Name" value="{{ $user?$user->user_name:'' }}" required autocomplete="user_name" autofocus>

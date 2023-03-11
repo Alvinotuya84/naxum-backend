@@ -21,3 +21,5 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('users', UsersController::class);
+Route::get('/users-all',[UsersController::class,'viewall'])->name('users.all');
+

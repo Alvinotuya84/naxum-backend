@@ -27,7 +27,7 @@
                 <div class="card bg-gradient-info card-img-holder text-white">
             <a href="{{route('users.index')}}" class="card-body">
                     <img src="{{asset('assets/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Accounts <i class="mdi mdi-account-group mdi-24px float-right"></i>
+                    <h4 class="font-weight-normal mb-3">Non Admin Accounts <i class="mdi mdi-account-group mdi-24px float-right"></i>
                     </h4>
                     <h2 class="mb-5">{{App\Models\User::where('role',null)->get()->count()}}</h2>
                 </a>
@@ -35,12 +35,11 @@
               </div>
               <div class="col-md-4 stretch-card grid-margin">
                 <div class="card bg-gradient-success card-img-holder text-white">
-                  <a href="" class="card-body">
+                  <a href="{{route('users.all')}}" class="card-body">
                     <img src="{{asset('assets/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Accounts Logged In  <i class="mdi mdi-account-check mdi-24px float-right"></i>
+                    <h4 class="font-weight-normal mb-3">All Accounts  <i class="mdi mdi-account-check mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">95,5741</h2>
-                    <h6 class="card-text">Percentage logins 5%</h6>
+                    <h2 class="mb-5">{{App\Models\User::all()->count()}}</h2>
                 </a>
                 </div>
               </div>
