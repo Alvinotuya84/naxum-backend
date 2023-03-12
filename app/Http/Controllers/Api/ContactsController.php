@@ -41,6 +41,10 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'nullable',
+            'contact'=>'required'
+        ]);
         $user=Auth::user();
 
         Contact::create([
