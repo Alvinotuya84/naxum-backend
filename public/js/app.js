@@ -5568,7 +5568,7 @@ function Accounts(_ref) {
       if (confirm("Are you sure you want to delete this contact?")) {
         setLoading(true);
         jquery__WEBPACK_IMPORTED_MODULE_4___default().ajax({
-          url: "/users/".concat(jquery__WEBPACK_IMPORTED_MODULE_4___default()('#delete').attr('data-value')),
+          url: "/users/".concat(jquery__WEBPACK_IMPORTED_MODULE_4___default()('.delete').attr('data-value')),
           headers: {
             'X-CSRF-TOKEN': jquery__WEBPACK_IMPORTED_MODULE_4___default()('meta[name="csrf-token"]').attr('content')
           },

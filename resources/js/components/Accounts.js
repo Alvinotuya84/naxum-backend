@@ -20,7 +20,7 @@ function Accounts({accounts}) {
                 if(confirm("Are you sure you want to delete this contact?")){
                     setLoading(true)
                     $.ajax({
-                        url: `/users/${$('#delete').attr('data-value')}`,
+                        url: `/users/${$('.delete').attr('data-value')}`,
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         type: 'DELETE',
 
