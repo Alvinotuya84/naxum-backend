@@ -16,7 +16,7 @@ function Accounts({accounts}) {
         $(accounts_table.current).DataTable({
 
           });
-            $('#delete').click(function(){
+            $('.delete').click(function(){
                 if(confirm("Are you sure you want to delete this contact?")){
                     setLoading(true)
                     $.ajax({
@@ -26,12 +26,18 @@ function Accounts({accounts}) {
 
                     }).done(function(response){
                       setLoading(false)
-                      console.log(response)
+                      alert("Account Deleted Succesfull")
+                      window.location.reload()
 
                       console.log(response)
                     }).catch(function(error){
+                        alert("An Error occcured during the deletion process please refresh the page and try again")
+
                       console.log(error.message)
+
                       setLoading(false)
+                      window.location.reload()
+
                     })
                 }
 
@@ -63,14 +69,14 @@ function Accounts({accounts}) {
 </thead>
 <tbody>
     {
-        JSON.parse(accounts).map((item, index) =>(
-            <tr key={index}>
+        JSON.parse(accounts).map((item) =>(
+            <tr key={item.id}>
             <td>{item.user_name}</td>
             <td>{item?.contact_number}</td>
             <td>{item.email}</td>
             <td><a href={`/users/${item.id}/edit`} className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-1.5 text-center mr-2 mb-2">Edit</a>
 </td>
-            <td><a id="delete" data-value={item.id} href='#' className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-1.5 text-center mr-2 mb-2">{loading?"Loading...":"Delete"}</a>
+            <td><a  data-value={item.id} href='#' className="delete text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-1.5 text-center mr-2 mb-2">{loading?"Loading...":"Delete"}</a>
 </td>
 
 

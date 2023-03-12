@@ -5564,7 +5564,7 @@ function Accounts(_ref) {
   var accounts_table = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     jquery__WEBPACK_IMPORTED_MODULE_4___default()(accounts_table.current).DataTable({});
-    jquery__WEBPACK_IMPORTED_MODULE_4___default()('#delete').click(function () {
+    jquery__WEBPACK_IMPORTED_MODULE_4___default()('.delete').click(function () {
       if (confirm("Are you sure you want to delete this contact?")) {
         setLoading(true);
         jquery__WEBPACK_IMPORTED_MODULE_4___default().ajax({
@@ -5575,11 +5575,14 @@ function Accounts(_ref) {
           type: 'DELETE'
         }).done(function (response) {
           setLoading(false);
-          console.log(response);
+          alert("Account Deleted Succesfull");
+          window.location.reload();
           console.log(response);
         })["catch"](function (error) {
+          alert("An Error occcured during the deletion process please refresh the page and try again");
           console.log(error.message);
           setLoading(false);
+          window.location.reload();
         });
       }
     });
@@ -5606,7 +5609,7 @@ function Accounts(_ref) {
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
-        children: JSON.parse(accounts).map(function (item, index) {
+        children: JSON.parse(accounts).map(function (item) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
               children: item.user_name
@@ -5622,14 +5625,13 @@ function Accounts(_ref) {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-                id: "delete",
                 "data-value": item.id,
                 href: "#",
-                className: "text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-1.5 text-center mr-2 mb-2",
+                className: "delete text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-1.5 text-center mr-2 mb-2",
                 children: loading ? "Loading..." : "Delete"
               })
             })]
-          }, index);
+          }, item.id);
         })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_5__.ToastContainer, {
